@@ -1,2 +1,2 @@
 # Newshub
-this is full stack Newshub website buil on Mern stacl
+this is full stack Newshub website buil on Mern stack

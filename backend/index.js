@@ -2,8 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-// const route = require('./route/SaveArticle'); // Correct import path for the SaveArticle route
-// const Article = require('./models/ArticleModel');
 
 
 const app = express();
@@ -17,10 +15,6 @@ const cookieParser = require('cookie-parser');
 
 connectDB();
 app.use(cookieParser())
-
-
-// app.use(route)
-// app.use(Article)
 
 const generateToken = (userId) => {
     return jwt.sign({ userId }, 'nit@#123', { expiresIn: '2h' });
