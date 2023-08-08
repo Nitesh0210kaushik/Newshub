@@ -1,12 +1,13 @@
 
 
+
 import '../App.css';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import FontAwesomeIcon
-import { faSignOutAlt, faUser, faHome, faClock } from '@fortawesome/free-solid-svg-icons'; // Import icon components
+import { faSignOutAlt, faHome, faClock } from '@fortawesome/free-solid-svg-icons'; // Import icon components
 
 
 
@@ -52,9 +53,9 @@ const Navbar = () => {
               <li>
                 <FontAwesomeIcon icon={faClock} /> {formattedTime}
               </li>
-              <li>
+              {/* <li>
                 <FontAwesomeIcon icon={faUser} /> {isLoggedIn}
-              </li>
+              </li> */}
               <li>
                 <Link onClick={logout} to="/signup">
                   <FontAwesomeIcon icon={faSignOutAlt} /> Logout
@@ -78,4 +79,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
 

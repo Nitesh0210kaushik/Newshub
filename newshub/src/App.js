@@ -22,7 +22,7 @@ function App() {
             
           </Route>
 
-          {/* Public Routes */}
+         
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
         </Routes>
@@ -32,3 +32,6 @@ function App() {
 }
 
 export default App;
+
+
+

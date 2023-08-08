@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import SelectInterest from '../pages/SelectInterest'; 
+ import SelectInterest from '../pages/SelectInterest'; 
 import NewsFeed from '../pages/NewsFeed';
 
 const Homepage = () => {
