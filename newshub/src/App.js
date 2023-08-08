@@ -1,4 +1,3 @@
-
 import './App.css';
 import Signup from './components/Signup';
 import Login from './components/Login';
@@ -8,26 +7,24 @@ import Homepage from './components/Homepage';
 import Logout from './components/Logout';
 import ProtectedComponent from './components/ProtectedComponent';
 
+
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Navbar />
         <Routes>
-           
-
-        <Route element = {<ProtectedComponent />} >
-     <Route path="/" element={<Homepage />} />
-     <Route path="/logout" element={<Logout />} />
-      </Route>
-
-
+          <Route
+            element={<ProtectedComponent />}
+          >
+            <Route path="/" element={<Homepage />} />
+            <Route path="/logout" element={<Logout />} />
+            
+          </Route>
 
           {/* Public Routes */}
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-
-          
         </Routes>
       </BrowserRouter>
     </div>
@@ -35,9 +32,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
-
-

@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import '../App.css'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'; // Import the eye icons
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +13,8 @@ const Login = () => {
   });
   const [error, setError] = useState(null); // State for error message
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false); // State for password visibility
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -52,11 +58,12 @@ const Login = () => {
     }
   };
 
+
   return (
     <div className="container">
       <form onSubmit={handleLogin}>
         <h1>Login</h1>
-        {error && <p className="error-message">{error}</p>} {/* Display error message if present */}
+        {error && <p className="error-message">{error}</p>}
 
         <div>
           <label>Email</label>
@@ -70,13 +77,22 @@ const Login = () => {
         </div>
         <div>
           <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="enter password"
-            value={formData.password}
-            onChange={handleChange}
-          />
+          <div className="password-input">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              name="password"
+              placeholder="enter password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+            <button
+              type="button"
+              className="password-toggle"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+            </button>
+          </div>
         </div>
         <button type="submit">Login</button>
       </form>

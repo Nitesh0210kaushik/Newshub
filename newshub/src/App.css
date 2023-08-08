@@ -120,11 +120,14 @@ label {
 input {
     display: block;
     width: 100%;
-    padding: 5px;
+    padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
 }
+
+
+/* Add this CSS to your existing styles or a separate CSS file */
 
 button {
     background-color: #007bff;
@@ -134,6 +137,33 @@ button {
     border-radius: 3px;
     cursor: pointer;
     width: 100%;
+}
+
+
+/* Add this CSS to your existing styles or a separate CSS file */
+
+.password-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 0;
+    background: none;
+    bottom: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #999;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 40px;
+    /* Adjust the width as needed */
 }
 
 button:hover {
@@ -152,40 +182,58 @@ button:hover {
 
 /* Base styles for the Navbar */
 
+
+/* Navbar styles */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px;
+    background-color: #333;
+    color: white;
+}
+
+.nav-left,
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
 .nav-ul {
-    padding: 5px;
-    margin: 0px;
-    background-color: skyblue;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
 }
 
 .nav-ul li {
-    display: inline-block;
-    padding: 10px;
+    margin: 0 15px;
 }
 
-.nav-ul li a {
-    color: #fff;
+.nav-ul a {
+    color: white;
     text-decoration: none;
-    padding: 5px;
-}
-
-.nav-right {
-    text-align: right;
+    display: flex;
+    align-items: center;
 }
 
 
-/* Styles for smaller devices */
+/* FontAwesome icons */
 
-@media (max-width: 768px) {
-    .navbar {
-        display: flex;
+.nav-ul li svg {
+    margin-right: 5px;
+}
+
+
+/* Responsive design */
+
+@media screen and (max-width: 768px) {
+    .nav-ul {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
     }
-    .navbar ul {
-        margin-top: 10px;
-    }
-    .navbar li {
+    .nav-ul li {
         margin: 10px 0;
     }
 }

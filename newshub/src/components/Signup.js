@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 import '../App.css';
 
@@ -14,7 +15,8 @@ const Signup = () => {
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [errors, setErrors] = useState({});
- 
+  const [showPassword, setShowPassword] = useState(false); // Add this state
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -45,11 +47,7 @@ const Signup = () => {
         });
         result = await result.json();
         console.warn(result);
-        // localStorage.setItem("user", JSON.stringify(result));
-        // //  if (result){
-        //       navigate('/')
         Cookies.remove('isLoggedIn');
-
         navigate('/');
       } catch (error) {
         console.error('Error:', error);
@@ -88,92 +86,99 @@ const Signup = () => {
   };
 
   return (
-    <>
-      <div className="signup-container">
-        <form onSubmit={handleSubmit}>
-          <h1>User Registration Page</h1>
-          <div>
-            <label>Username</label>
+    <div className="signup-container">
+      <form onSubmit={handleSubmit}>
+        <h1>User Registration Page</h1>
+        <div>
+          <label>Username</label>
+          <input
+            type="text"
+            name="username"
+            placeholder='enter username'
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+          />
+          {errors.userName && <p>{errors.userName}</p>}
+        </div>
+        <div>
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            placeholder='enter-email'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          {errors.email && <p>{errors.email}</p>}
+        </div>
+        <div>
+          <label>Phone Number</label>
+          <input
+            type="text"
+            name="phone"
+            placeholder='enter phone number'
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          />
+          {errors.phone && <p>{errors.phone}</p>}
+        </div>
+        <div>
+          <label>Age</label>
+          <input
+            type="text"
+            name="age"
+            placeholder='enter age'
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+          />
+          {errors.age && <p>{errors.age}</p>}
+        </div>
+        <div>
+          <label>Gender</label>
+          <select
+            name="gender"
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+          >
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+          {errors.gender && <p>{errors.gender}</p>}
+        </div>
+        <div>
+          <label>Password</label>
+          <div className="password-input">
             <input
-              type="text"
-              name="username"
-              placeholder='enter username'
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
-            />
-            {errors.userName && <p>{errors.userName}</p>}
-          </div>
-          <div>
-            <label>Email</label>
-            <input
-              type="email"
-              name="email"
-              placeholder='enter-email'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            {errors.email && <p>{errors.email}</p>}
-          </div>
-          <div>
-            <label>Phone Number</label>
-            <input
-              type="text"
-              name="phone"
-              placeholder='enter phone number'
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-            />
-            {errors.phone && <p>{errors.phone}</p>}
-          </div>
-          <div>
-            <label>Age</label>
-            <input
-              type="text"
-              name="age"
-              placeholder='enter age'
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
-            />
-            {errors.age && <p>{errors.age}</p>}
-          </div>
-          <div>
-            <label>Gender</label>
-            <select
-              name="gender"
-              value={gender}
-              onChange={(e) => setGender(e.target.value)}
-            >
-              <option value="">Select Gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-              <option value="Other">Other</option>
-            </select>
-            {errors.gender && <p>{errors.gender}</p>}
-          </div>
-          <div>
-            <label>Password</label>
-            <input
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               name="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            {errors.password && <p>{errors.password}</p>}
+            <button
+              type="button"
+              className="password-toggle"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+            </button>
           </div>
-          <div>
-            <label>Confirm Password</label>
-            <input
-              type="password"
-              name="confirmPassword"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-            {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
-          </div>
-          <button type="submit">Sign Up</button>
-        </form>
-      </div>
-    </>
+          {errors.password && <p>{errors.password}</p>}
+        </div>
+        <div>
+          <label>Confirm Password</label>
+          <input
+            type="password"
+            name="confirmPassword"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+          {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+        </div>
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
   );
 };
 

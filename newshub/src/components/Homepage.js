@@ -6,6 +6,8 @@ import NewsFeed from '../pages/NewsFeed';
 const Homepage = () => {
   const availableInterests = ['politics', 'sports', 'technology', 'health'];
   const [userInterest, setUserInterest] = useState('');
+  
+
 
   const handleInterestChange = (interest) => {
     setUserInterest(interest);
