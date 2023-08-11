@@ -16,7 +16,7 @@ const Signup = () => {
   const [gender, setGender] = useState("");
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false); // Add this state
-
+  const backendURLsignup = 'https://newshub-b0h0.onrender.com'; 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -38,7 +38,7 @@ const Signup = () => {
     } else {
       setErrors({});
       try {
-        let result = await fetch("http://localhost:8000/signup", {
+        let result = await fetch(`${backendURLsignup}/signup`, {
           method: 'post',
           body: JSON.stringify(formData),
           headers: {
