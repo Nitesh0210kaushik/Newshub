@@ -3,6 +3,14 @@ this is full stack Newshub website built on Mern stack
 I have used MERN stack technologies like,     Mongodb for dtabase in Backend, Express and Node.js in Backend
 and React.js in frontend and there is also usuage of css for styling.
 
+
+
+
+connection done with mongodb atlas
+
+
+
+
 --> to run this project on your system
 1.        git clone https://github.com/Nitesh0210kaushik/Newshub.git            or download zip folder
 2.        install node modules  through --                npm install
@@ -17,9 +25,9 @@ and React.js in frontend and there is also usuage of css for styling.
 install all these packages
  FontAwesomeIcon
 eyeIcon
- icon components
- js-cookie
-  react-router-dom
+icon components
+js-cookie
+react-router-dom
 
   ----> to run  project  -----         npm start
   it will run on port 3000

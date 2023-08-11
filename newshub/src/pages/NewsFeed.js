@@ -4,8 +4,6 @@ import "./style.css";
 
 const NewsFeed = ({ userInterest }) => {
   const [newsData, setNewsData] = useState([]);
-  
-
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -27,39 +25,35 @@ const NewsFeed = ({ userInterest }) => {
     fetchNews();
   }, [userInterest]);
 
- 
   return (
     <div className="container">
-      {newsData.map((article) => (
-        <div key={article.url} className="news-article">
-          <h3>{article.title}</h3>
-          <p>{article.description}</p>
-          <Link to={article.url} target="_blank" className="read-more">
-            Read more
-          </Link>
-        
-          {article.urlToImage ? (
-            <img
-              src={article.urlToImage}
-              alt={article.title}
-              className="article-image"
-            />
-          ) : (
-            <p className="no-image">Image not available</p>
-          )}
-
-          <p className="published-date">
-            Published at: {new Date(article.publishedAt).toLocaleString()}
-          </p>
-
-        </div>
-      ))}
+      {newsData.length === 0 ? (
+        <h2>No news available for the selected interest.</h2>
+      ) : (
+        newsData.map((article) => (
+          <div key={article.url} className="news-article">
+            <h3>{article.title}</h3>
+            <p>{article.description}</p>
+            <Link to={article.url} target="_blank" className="read-more">
+              Read more
+            </Link>
+            {article.urlToImage ? (
+              <img
+                src={article.urlToImage}
+                alt={article.title}
+                className="article-image"
+              />
+            ) : (
+              <p className="no-image">Image not available</p>
+            )}
+            <p className="published-date">
+              Published at: {new Date(article.publishedAt).toLocaleString()}
+            </p>
+          </div>
+        ))
+      )}
     </div>
   );
 };
 
 export default NewsFeed;
-
-
-
-

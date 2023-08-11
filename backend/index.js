@@ -2,22 +2,23 @@ const express = require('express');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
-
+const dotenv = require('dotenv')
+dotenv.config({ path: './config.env' })
+require('./models/Config')
 const app = express();
+const PORT = process.env.PORT
 app.use(cors());
 app.use(express.json());
 
-const connectDB = require('./models/Config');
+// const connectDB = require('./models/Config');
 const User = require('./models/User');
 const cookieParser = require('cookie-parser');
 
-
-connectDB();
+// connectDB();
 app.use(cookieParser())
 
 const generateToken = (userId) => {
-    return jwt.sign({ userId }, 'nit@#123', { expiresIn: '2h' });
+    return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '2h' });
 };
 
 app.post('/signup', async(req, res) => {
@@ -78,7 +79,7 @@ app.post('/login', async(req, res) => {
     }
 });
 
-const port = 8000;
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
